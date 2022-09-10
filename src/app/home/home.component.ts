@@ -23,7 +23,6 @@ export class HomeComponent implements OnInit{
   dataSource !: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator !: MatPaginator;
   @ViewChild(MatSort) sort !: MatSort;
-  //complete = false;
   currentDate = new Date();
   newdate = moment(this.currentDate).utcOffset('+0500').format('YYYY-MM-DD');
   constructor(public dialog: MatDialog , private homeservice : HomeService ,private route : Router) {} 
@@ -38,6 +37,7 @@ export class HomeComponent implements OnInit{
     });
   }
 
+  //opening dialog box to edit data
   editTask(row:any) {
     this.dialog.open(DialogComponent, {
       width:"20%",
@@ -45,6 +45,7 @@ export class HomeComponent implements OnInit{
     });
   }
   
+  //getting tasks from API
   getTask(){
     if (localStorage.getItem('access_token')) { 
     this.homeservice.TaskList().subscribe({
@@ -64,7 +65,7 @@ export class HomeComponent implements OnInit{
     }
     }
 
-     
+    // deleting data from table
     deleteData(id:number){
       if (localStorage.getItem('access_token')) { 
       this.homeservice.destroyTask(id).subscribe({
@@ -84,6 +85,7 @@ export class HomeComponent implements OnInit{
     
     } 
     
+    //Filer for Table
     applyFilter(event: Event) {
       const filterValue = (event.target as HTMLInputElement).value;
       this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -92,26 +94,9 @@ export class HomeComponent implements OnInit{
         this.dataSource.paginator.firstPage();
       }
     }
-    
-    /* logOutuser(){
-      this.homeservice.logoutuser().subscribe(
-        {
-          next:(res)=>{
-            alert("logged out");
-            this.route.navigate(["login"]);
-          }
-          , error:()=>("error")
-        }
-       );
-     }
-
-  } */
- //log out
+   
+  //user logout clearing Localstorage
   logOutuser(){
-    
-          //get pass token 
-          // api call where you pass tojen as parameter which login has to be bl
-          
           alert("logged out");
           localStorage.clear();
           this.route.navigate(["login"]);

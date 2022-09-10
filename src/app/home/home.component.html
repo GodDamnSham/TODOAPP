@@ -38,24 +38,25 @@
         <td mat-cell *matCellDef="let row"> {{row.id}} </td>
       </ng-container>
   
-      <!-- Progress Column -->
+      <!-- aufgabe Column -->
       <ng-container matColumnDef="aufgabe">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Aufgabe</th>
         <td mat-cell *matCellDef="let row" [ngStyle]="{'background-color':row.complete === true ? '#7bb77b' : 'yellow' }"> {{row.aufgabe}} </td>
       </ng-container>
   
-      <!-- Name Column -->
+      <!-- Beschreibung Column -->
       <ng-container matColumnDef="Beschreibung">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Beschreibung</th>
         <td mat-cell *matCellDef="let row" [ngStyle]="{'background-color':row.complete === true ? '#7bb77b' : 'yellow' }"> {{row.Beschreibung}} </td>
       </ng-container>
   
-      <!-- Fruit Column -->
+      <!-- Datum Column -->
       <ng-container matColumnDef="date">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Datum </th>
         <td mat-cell *matCellDef="let row" [ngStyle]="{'background-color':row.complete === true ? '#7bb77b' : 'yellow' }" > {{row.date | date}} </td>
       </ng-container>
-
+     
+       <!-- Category Column -->
       <ng-container matColumnDef="category">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Kategorie </th>
         <td mat-cell *matCellDef="let row" [ngStyle]="{'background-color':row.complete === true ? '#7bb77b' : 'yellow' }" > {{row.category}} </td>
@@ -75,10 +76,8 @@
          <button (click)="deleteData(row.id)" mat-icon-button color="warn" >
           <mat-icon>delete</mat-icon>
         </button>
-        <!-- <mat-slide-toggle>wichtig</mat-slide-toggle> -->
        <section class="example-section">
        </section>
-        <!-- <button (click)="deleteData(row.id)" mat-button color="accent">erledigt</button> -->
       </td>
       </ng-container>
   
@@ -110,23 +109,23 @@
      
         <!-- ID Column -->
         <ng-container matColumnDef="id">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
-          <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header > ID </th>
+          <td mat-cell *matCellDef="let row" > {{row.id}} </td>
         </ng-container>
     
-        <!-- Progress Column -->
+        <!-- Aufgabe Column -->
         <ng-container matColumnDef="aufgabe">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Aufgabe</th>
-          <td mat-cell *matCellDef="let row" [ngStyle]="{'background-color':row.date < newdate && row.complete == false ? '#FFCCCB' : '' }"> <span *ngIf="row.date < newdate && row.complete == false ">{{row.aufgabe}} </span></td>
+          <td mat-cell *matCellDef="let row" [ngStyle]="{'background-color':row.date < newdate && row.complete == false ? '#FFCCCB' : '' }" > <span *ngIf="row.date < newdate && row.complete == false">{{row.aufgabe}} </span></td>
         </ng-container>
     
-        <!-- Name Column -->
+        <!-- Beschreibung Column -->
         <ng-container matColumnDef="Beschreibung">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Beschreibung</th>
           <td mat-cell *matCellDef="let row" [ngStyle]="{'background-color':row.date < newdate && row.complete == false ? '#FFCCCB' : '' }"> <span *ngIf="row.date < newdate && row.complete == false">{{row.Beschreibung}} </span></td>
         </ng-container>
     
-        <!-- Fruit Column -->
+        <!-- Datum Column -->
         <ng-container matColumnDef="date">
        
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Datum </th>
@@ -134,16 +133,18 @@
           </td>
         </ng-container>
   
+         <!-- Category Column -->
         <ng-container matColumnDef="category">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Kategorie </th>
           <td mat-cell *matCellDef="let row" [ngStyle]="{'background-color':row.date < newdate && row.complete == false ? '#FFCCCB' : '' }" > <span *ngIf="row.date < newdate && row.complete == false ">{{row.category}} </span></td>
         </ng-container>
         
+         <!-- Status Column -->
         <ng-container matColumnDef="complete">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> status</th>
           <td mat-cell *matCellDef="let row" [ngStyle]="{'background-color':row.date < newdate && row.complete == false ? '#FFCCCB' : '' }" > 
             <span *ngIf="row.date < newdate && row.complete == false">
-            {{(row.complete === true ? 'erledigt' : 'nicht erledigt')}}</span></td>
+            {{(row.complete === true ? '' : 'ausstehend')}}</span></td>
         </ng-container> 
         <ng-container matColumnDef="action">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>

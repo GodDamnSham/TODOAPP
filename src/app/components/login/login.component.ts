@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
       };
     }
 
-    
+  //login api request
   loginuser(){
    console.log(this.login);
      this.userService.loginUser(this.login).subscribe(

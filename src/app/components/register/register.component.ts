@@ -29,6 +29,8 @@ export class RegisterComponent implements OnInit {
         password:'',
       };
     }
+
+  //Register user api request
   registeruser(){
    console.log(this.reg);
      this.userService.registerNewuser(this.reg).subscribe(

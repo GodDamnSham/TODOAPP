@@ -1,3 +1,4 @@
+
 gradient-custom {
     /* fallback for old browsers */
     background: #6a11cb;
@@ -11,5 +12,7 @@ gradient-custom {
     .btn-primary{
 
         margin-left:10px;
-        
-        }
+    }
+html{
+    background-color: black;
+}

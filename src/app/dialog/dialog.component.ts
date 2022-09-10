@@ -36,14 +36,7 @@ export class DialogComponent implements OnInit {
       this.todoForm.controls['date'].setValue(strDate)
       
       }
-
-      
-     
-         
-      
-      
-
-    
+    //filling form data with dialog box
     ngOnInit(){      
     this.homeservice.TaskList();
      this.todoForm = this.formbuilder.group({
@@ -54,7 +47,8 @@ export class DialogComponent implements OnInit {
         complete:[false],
        }
      );
-
+    
+     //edit data 
     if(this.editData){
       this.todoForm.controls['aufgabe'].setValue(this.editData.aufgabe);
       this.todoForm.controls['Beschreibung'].setValue(this.editData.Beschreibung);
@@ -64,7 +58,7 @@ export class DialogComponent implements OnInit {
     }
 
    }
-
+  // adding task to the form (api request)
   addTask(){
   console.log(this.todoForm.value);
   console.log(this.complete);
@@ -89,7 +83,7 @@ else{
   }
 }
 
-
+//updating user data with api request
 updatedata(){
   this.homeservice.updateTask(this.todoForm.value ,this.editData.id).subscribe({
     next:(res)=>{
